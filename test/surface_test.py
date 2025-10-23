@@ -429,7 +429,7 @@ class SurfaceTypeTest(unittest.TestCase):
         # rect returns the area we actually fill.
         r3 = s2.fill(color2, (-30, -30, 5, 5))
         # since we are using negative coords, it should be an zero sized rect.
-        self.assertEqual(tuple(r3), (0, 0, 0, 0))
+        self.assertEqual(r3, pygame.Rect(0, 0, 0, 0))
 
     def test_fill_keyword_args(self):
         """Ensure fill() accepts keyword arguments."""
