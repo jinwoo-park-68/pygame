@@ -1794,6 +1794,8 @@ surf_fill(pgSurfaceObject *self, PyObject *args, PyObject *keywds)
 
         // clip the rect to be within the surface.
         if (sdlrect.x + sdlrect.w <= 0 || sdlrect.y + sdlrect.h <= 0) {
+            sdlrect.x = 0;
+            sdlrect.y = 0;
             sdlrect.w = 0;
             sdlrect.h = 0;
         }
@@ -1814,6 +1816,13 @@ surf_fill(pgSurfaceObject *self, PyObject *args, PyObject *keywds)
             }
             if (sdlrect.h > maxh) {
                 sdlrect.h = maxh;
+            }
+
+            if (sdlrect.w <= 0 || sdlrect.h <= 0) {
+                sdlrect.x = 0;
+                sdlrect.y = 0;
+                sdlrect.w = 0;
+                sdlrect.h = 0;
             }
         }
 
